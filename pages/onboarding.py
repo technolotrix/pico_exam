@@ -18,7 +18,7 @@ class OnboardingPage(BasePage):
     def is_element_on_page(self, element):
         elems = {
             'email_verification': OnboardingLocators.EMAIL_SENT_VERIFICATION,
-            'logo': OnboardingLocators.COMPANY_LOGO,
+            'logo': CommonLocators.COMPANY_LOGO,
             'name': OnboardingLocators.NAME_FIELD,
             'next': OnboardingLocators.NEXT_BUTTON,
             'password': OnboardingLocators.PASSWORD_FIELD,

@@ -114,7 +114,7 @@ class TestOnboardingWizard():
     @attr(priority="high")
     def test_user_is_prompted_to_enter_a_name_and_password_after_entering_valid_unused_email(self):
         email = tools.create_test_email(onboarding_data.valid_email)
-        password = tools.make_valid_password
+        password = tools.create_test_password
 
         self.page.click_and_fill_out_form('email', email)
         self.page.click_button_and_wait('next')
