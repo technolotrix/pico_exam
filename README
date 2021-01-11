@@ -1,10 +1,21 @@
 Instructions for running the suite:
 
-1.
+1. Uses python3.9 and packages can be installed using requirements.txt
+    python -m pip install requirements.txt
+
 2.
-3. nosetests -vs tests/
+3. Download the Chromedriver binary and include it in your PATH
+    https://sites.google.com/a/chromium.org/chromedriver/downloads
+    Otherwise, you can update config/settings.py to use firefox (lowercase string)
+
+4. From the root directory of this repository, execute test commands
+
+Selenium tests:
+nosetests -vs tests/
+
+Performance test:
+bash tests/performance/performance.sh
+To plot results:
+python histogram.py
 
 General notes:
-Folder struct would be more complex, separate data from tests (no hard-coded data)
-
-Chromedriver binary must be in PATH

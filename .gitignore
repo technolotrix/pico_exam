@@ -12,7 +12,7 @@
 .noseids
 
 # virtualenv
-dev/
+qa_dev/
 
 # chromedriver
 bin/
@@ -22,3 +22,6 @@ bin/
 
 #tmp
 tmp/
+
+#cfg
+*.cfg
