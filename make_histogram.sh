@@ -1,10 +1,6 @@
-#!/usr/bin/gnuplot -persist
+#!/bin/bash
+# source .env
 
-set style data histogram
-set style fill solid border -1
+# bash tests/test_performance.sh
 
-set title "Performance Test: 100 Requests and 10 Concurrencies"
-set xlabel "Number of Requests"
-set ylabel "Time (ms)"
-
-set xlabel "location"
+gnuplot benchmark_histogram.p

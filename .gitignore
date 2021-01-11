@@ -11,9 +11,6 @@
 # nose
 .noseids
 
-# secrets
-secrets/
-
 # virtualenv
 dev/
 
@@ -21,7 +18,7 @@ dev/
 bin/
 
 #.env
-.env
+#.env
 
-#DUMP
-DUMP/
+#tmp
+tmp/
