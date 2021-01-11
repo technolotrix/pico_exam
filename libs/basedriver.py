@@ -1,6 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-from data import settings
+from config import settings
 
 COMMAND_EXECUTOR = 'http://hub:4444/wd/hub'
 VALID_BROWSERS = ("chrome", "firefox", "phantomjs")
@@ -11,8 +11,8 @@ WAIT = 3
 class BaseDriver():
 
     def __init__(self):
-        self.browser = settings.BROWSER
-        self.run_local = settings.LOCAL_SELENIUM
+        self.browser = settings.browser
+        self.is_remote_browser = settings.remote
 
         if self.browser not in VALID_BROWSERS:
             raise Exception(
@@ -46,7 +46,7 @@ class BaseDriver():
 
         driver = drivers.get(browser)
         driver['command_executor'] = COMMAND_EXECUTOR
-
+        print(driver, "DRIVER")
         return webdriver.Remote(driver)
 
     def set_window_size(self, wait=WAIT, size=None):
@@ -55,9 +55,9 @@ class BaseDriver():
             self.driver.set_window_size(size)
 
     def make_driver(self, browser, size=None):
-        if self.run_local:
-            self.driver = self.make_local_driver(browser)
-        else:
+        if self.is_remote_browser is not False:
             self.driver = self.make_remote_driver(browser)
+        else:
+            self.driver = self.make_local_driver(browser)
 
         self.set_window_size()

@@ -2,10 +2,9 @@ from nose.tools import assert_true
 
 from libs.basedriver import BaseDriver
 
-from page import TopNavPage
-from data.settings import onboarding_start_url as url
+from pages.onboarding_start import OnboardingStartPage
+from config.settings import onboarding_start_url as url
 
-URL = BASEURL
 
 class TestOnboardingWizardStart():
 

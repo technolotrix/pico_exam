@@ -12,7 +12,7 @@ from selenium.common.exceptions import StaleElementReferenceException as Stale
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
-from libs.sel.basedriver import WAIT
+from libs.basedriver import WAIT
 
 
 class CustomActions():

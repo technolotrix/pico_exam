@@ -1,4 +1,4 @@
-from libs.sel.helpers import CustomActions
+from libs.selenium_helpers import CustomActions
 
 
 class BasePage(object):

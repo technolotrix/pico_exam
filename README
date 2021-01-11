@@ -6,3 +6,5 @@ Instructions for running the suite:
 
 General notes:
 Folder struct would be more complex, separate data from tests (no hard-coded data)
+
+Chromedriver binary must be in PATH

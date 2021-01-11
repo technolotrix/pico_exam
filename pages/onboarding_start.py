@@ -1,6 +1,6 @@
-from basepage import BasePage
-from locators import Onboarding as OBL
-from libs.sel.helpers import CustomActions
+from pages.basepage import BasePage
+from locators.onboarding import CommonLocators, OnboardingLocators, GoogleSignupLocators
+from libs.selenium_helpers import CustomActions
 
 
 class OnboardingStartPage(BasePage):
