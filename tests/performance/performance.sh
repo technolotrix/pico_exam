@@ -8,8 +8,10 @@ source config/performance_settings.sh
 # -c to specify concurrency
 # -n to specify number of requests
 # -g to specify gnu output file
+
 echo "Writing results to $OUTPUTFILE"
 ab -p data/post_payload.txt -T application/json -H "Authorization: $AUTH_TOKEN" -c $CONCURRENCY -n $NUM_REQUESTS -g $OUTPUTFILE $PERFORMANCE_URL
 
 # Plot results
-python libs/histogram.py
+#!/usr/bin/python3
+python libs/histogram.py $OUTPUTFILE

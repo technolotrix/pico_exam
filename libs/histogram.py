@@ -1,13 +1,19 @@
-import os
+import sys
 
 import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib
 
-inputfile = str(os.environ.get('OUTPUTFILE'))
+if len(sys.argv) < 2:
+    print('Usage: ' + sys.argv[0] + ' <filename>')
+    sys.exit(1)
+
+inputfile = str(sys.argv[1])
 
 f = np.loadtxt(inputfile,
     skiprows=1, usecols=8, unpack='False')
+
+print("Creating histogram for file {}".format(inputfile))
 
 bins = [10 * n for n in range(100)]
 
