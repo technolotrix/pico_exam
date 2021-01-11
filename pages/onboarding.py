@@ -15,6 +15,18 @@ class OnboardingPage(BasePage):
     def is_page(self, expected_url):
         return self.helpers.get_page_url() == expected_url
 
+    def is_element_on_page(self, element):
+        elems = {
+            'email_verification': OnboardingLocators.EMAIL_SENT_VERIFICATION,
+            'logo': OnboardingLocators.COMPANY_LOGO,
+            'name': OnboardingLocators.NAME_FIELD,
+            'next': OnboardingLocators.NEXT_BUTTON,
+            'password': OnboardingLocators.PASSWORD_FIELD,
+            }
+
+        elem = elems.get(element)
+        return self.helpers.find(elem)
+
     def is_clickable(self, element):
         elems = {
             'next': OnboardingLocators.NEXT_BUTTON,

@@ -1,8 +1,10 @@
+import os
+
 import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib
 
-inputfile = '/Users/nicoleawesome/Desktop/pico_qa/tmp/histogram-2021-01-11_01-14-58.dat'
+inputfile = str(os.environ.get('OUTPUTFILE'))
 
 f = np.loadtxt(inputfile,
     skiprows=1, usecols=8, unpack='False')

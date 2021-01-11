@@ -11,11 +11,15 @@ Instructions for running the suite:
 4. From the root directory of this repository, execute test commands
 
 Selenium tests:
-nosetests -vs tests/
+nosetests -vs tests/ui/
 
-Performance test:
+Performance test and plot:
 bash tests/performance/performance.sh
-To plot results:
 python histogram.py
 
 General notes:
+
+
+.env file contents:
+
+PERFORMANCE_TEST_OUTPUT_PATH=
