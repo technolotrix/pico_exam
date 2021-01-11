@@ -1,0 +1,27 @@
+# Python
+*.pyc
+*__pycache__*
+
+# Mac
+*DS_Store*
+
+# Logs
+*.log
+
+# nose
+.noseids
+
+# secrets
+secrets/
+
+# virtualenv
+dev/
+
+# chromedriver
+bin/
+
+#.env
+.env
+
+#DUMP
+DUMP/
