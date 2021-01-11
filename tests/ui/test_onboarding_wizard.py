@@ -26,14 +26,14 @@ class TestOnboardingWizard():
 
     ### Onboarding page tests: Sign up using email ###
 
-    @attr(priority="hello world")
-    def test_company_logo_is_on_onboarding_page(self):
-        assert self.page.is_element_on_page('logo')
+    # @attr(priority="hello world")
+    # def test_company_logo_is_on_onboarding_page(self):
+    #     assert self.page.is_element_on_page('logo')
 
-    @attr(priority="high")
-    def test_clicking_login_link_directs_user_to_login_page(self):
-        self.page.click_link_and_wait('log_in')
-        assert self.page.is_page(onboarding_data.login_url)
+    # @attr(priority="high")
+    # def test_clicking_login_link_directs_user_to_login_page(self):
+    #     self.page.click_link_and_wait('log_in')
+    #     assert self.page.is_page(onboarding_data.login_url)
 
     @attr(priority="medium"):
     def test_clicking_x_closes_signup_workflow_and_returns_user_to_main_page(self):

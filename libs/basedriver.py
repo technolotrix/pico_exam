@@ -30,7 +30,6 @@ class BaseDriver():
         return drivers.get(browser)()
 
     def make_remote_driver(self, browser):
-        # For illustrative purposes only
         # Can DRY more
         drivers = {
             'firefox': {
@@ -46,7 +45,6 @@ class BaseDriver():
 
         driver = drivers.get(browser)
         driver['command_executor'] = COMMAND_EXECUTOR
-        print(driver, "DRIVER")
         return webdriver.Remote(driver)
 
     def set_window_size(self, wait=WAIT, size=None):

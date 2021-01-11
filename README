@@ -2,7 +2,7 @@ Instructions for running the suite:
 
 1.
 2.
-3.
+3. nosetests -vs tests/
 
 General notes:
 Folder struct would be more complex, separate data from tests (no hard-coded data)

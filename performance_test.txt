@@ -1,0 +1,10 @@
+Create a strategy or plan document that describes your approach
+
+1. Start by getting a baseline and using monitoring to understand how endpoints are currently performing
+2. Define the load test parameters (i.e. how many requests, over what time period, at what time of day)
+3.
+4.
+
+
+- Potential blockers:
+- Not getting 200 on any kind of POST

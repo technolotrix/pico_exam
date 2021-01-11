@@ -1,0 +1,20 @@
+Create a strategy or plan document that describes your approach and the test cases you will execute. Include in the plan xpath or element/selector details needed for each test.
+
+1. Overall strategy: Start with end-to-end workflow cases to make sure all points of workflow operate as expected under normal conditions. Can the user go through the workflow? From there, outline and define all other functional test cases for the area under test including assigning test cases an appropriate priority (examples include invalid email displays error, password meets requirements, cannot create account with no password, etc.)  Note that verifying the email has arrived is not in the scope of the included automation example, but it can be automated in the future if necessary. Lower priority functional tests are automated last (e.g. verify placeholder text in form fields)
+
+2. Selectors: Ideally, the use of unique element ids helps alleviate some of the common issues with Selenium selector reliability. Given the use of CSS, the strategy is to use CSS locators and possibly class names if the css locators prove unreliable. Xpath is brittle and is not recommended. Some examples of said selectors/locators are included in the file: pico_qa/data/locators.py
+In addition to reliable selenium selectors, correct user behavior and expected results need to be defined for each case.
+
+Some blockers, thoughts, and other considerations:
+- There is an existing issue in the suite where the 'next' button is not being clicked by Selenium. It does not appear to be a bug in the UI, but in the absence of time, this issue in the test suite should be mentioned
+
+- Vigorous repeated testing of the signup process requires creating many new unique accounts, (assuming duplicate emails are not allowed). There are multiple options for solving this issue. One option is to periodically clean out the test environments by deleting test data, and another option is to containerize said environments to create new instances when needed.
+- No password verification in the process currently
+- Are certain email domains excluded? While testing email domains, attempting to sign up with an @yopmail.com address returned a 422 and a UI error message indicating such
+- Am able to re-use email address for onboarding on stg, address was not verified. Is this expected behavior (in other words, until the email verification link is clicked, is the intent to keep sending an email? There is no notification to the user that the email address entered already exists)
+
+
+TODO:
+Dockerize test suite
+Add env variables and config files for CI integration and cross-enviroment execution
+Script for running tests

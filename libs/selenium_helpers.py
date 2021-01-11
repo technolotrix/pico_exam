@@ -1,5 +1,3 @@
-import os
-
 import selenium
 
 from selenium.webdriver.common.action_chains import ActionChains
@@ -38,47 +36,16 @@ class CustomActions():
         locator = self.find(locator)
         locator.send_keys(keys)
 
+    def get_page_url(self):
+        return self.driver.current_url
+
     def fill_out_form(self, locator, text):
         element = self.find(locator)
 
         if element:
+            element.click()
             element.clear()
             element.send_keys(text)
-
-    def hover_over_element(self, locator):
-        element = self.find(locator)
-
-        if element:
-            hover = ActionChains(self.driver).move_to_element(element)
-            hover.click_and_hold(element)
-            hover.perform()
-            hover.release(element)
-
-    def get_css_property(self, locator, css_property):
-        return str(self.find(locator).value_of_css_property(str(css_property)))
-
-    def execute_js(self, script, option=''):
-        self.driver.execute_script(str(script), option)
-
-    def move_to_offset_and_click(self, x, y):
-        actions = ActionChains(self.driver)
-        actions.move_by_offset(x, y)
-        actions.click()
-        actions.perform()
-
-    def scroll_to(self, x, y):
-        self.driver.execute_script("window.scrollTo({0}, {1});".format(x, y))
-
-    def return_coordinates(self, locator):
-        element = self.find(locator)
-
-        if element:
-            try:
-                loc = element.location
-            except ElementNotVisibleException:
-                return {}
-            return loc
-        return {}
 
     def get_text(self, locator):
         element = self.find(locator)
@@ -91,18 +58,8 @@ class CustomActions():
             return text
         return ''
 
-    def extract_attribute(self, locator, attribute):
-        element = self.find(locator)
-        if element:
-            try:
-                attr = element.get_attribute(attribute)
-            except ElementNotVisibleException:
-                return ''
-            return attr
-        return ''
-
     def wait_for_element(self, locator):
-        self.driver.implicitly_wait(0)
+        self.driver.implicitly_wait(3)
         wait = WebDriverWait(self.driver, WAIT)
 
         try:
@@ -115,7 +72,7 @@ class CustomActions():
             self.driver.implicitly_wait(WAIT)
 
     def wait_for_not_element(self, locator):
-        self.driver.implicitly_wait(0)
+        self.driver.implicitly_wait(3)
         wait = WebDriverWait(self.driver, WAIT)
 
         try:
@@ -127,48 +84,30 @@ class CustomActions():
         finally:
             self.driver.implicitly_wait(WAIT)
 
-    def wait_for_element_to_be_visible(self, locator):
+    def wait_for_enabled_element(self, locator):
+        self.driver.implicitly_wait(3)
+        wait = WebDriverWait(self.driver, WAIT)
+
         try:
-            WebDriverWait(self.driver, 12).until(EC.visibility_of_element_located(locator))
-        except (TimeoutException, ElementNotVisibleException, NoSuchElementException, ElementNotVisibleException) as e:
-            print("Element {0} is not visible after wait. Error message: {1}".format(locator, e))
+            wait.until_not(lambda s: s.find_element(*locator).is_enabled())
+        except (TimeoutException, ElementNotVisibleException, Stale) as e:
             return False
         else:
             return True
+        finally:
+            self.driver.implicitly_wait(WAIT)
+
+    def get_window_handles(self):
+        return self.driver.window_handles
+
+    def switch_to_new_window(self, handle):
+        return self.driver.switch_to_window(handle)
 
     def wait_for_element_to_be_clickable(self, locator):
         try:
-            WebDriverWait(self.driver, 12).until(EC.element_to_be_clickable(locator))
+            WebDriverWait(self.driver, 3).until(EC.element_to_be_clickable(locator))
         except (TimeoutException, ElementNotVisibleException, NoSuchElementException, ElementNotVisibleException) as e:
             print("Element {0} is not found after wait, so it cannot be clicked. Error message: {1}".format(locator, e))
             return False
         else:
             return True
-
-    def is_in_view(self, locator):
-        try:
-            WebDriverWait(self.driver, 2).until(wait_for_element_to_be_in_view(locator))
-        except (TimeoutException, ElementNotVisibleException, NoSuchElementException, ElementNotVisibleException) as e:
-            print("Element {0} is not visible in the viewport after wait. Error message: {1}".format(locator, e))
-            return False
-        else:
-            return True
-
-
-class wait_for_element_to_be_in_view(object):
-    def __init__(self, locator):
-        self.locator = locator
-
-    def __call__(self, driver):
-        try:
-            window_size = driver.get_window_size()
-            loc = EC._find_element(driver, self.locator)
-            locator_loc = loc.location
-            locator_size = loc.size
-            loc_w = locator_loc.get('x') + locator_size.get('width')
-            loc_h = locator_loc.get('y') + locator_size.get('height')
-
-            if (loc_w < window_size.get('width')) and (loc_h < window_size.get('height')):
-                return True
-        except Stale:
-            return False
