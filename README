@@ -1,25 +1,24 @@
 Instructions for running the suite:
 
-1. Uses python3.9 and packages can be installed using requirements.txt
-    python -m pip install requirements.txt
+Uses python3.9 and packages can be installed using requirements.txt
+    `python -m pip install requirements.txt`
 
-2.
-3. Download the Chromedriver binary and include it in your PATH
-    https://sites.google.com/a/chromium.org/chromedriver/downloads
+To change the URL used for performance tests, edit
+    `/config/performance_settings.sh`
+
+1. Download the Chromedriver binary and include it in your PATH
+    `https://sites.google.com/a/chromium.org/chromedriver/downloads`
     Otherwise, you can update config/settings.py to use firefox (lowercase string)
 
-4. From the root directory of this repository, execute test commands
+2. Run `setup.sh` from the root directory of this folder
+    The script will create and activate a virtual env, install packages, and run the tests. Alternatively, you can manually run tests from the root directory of the project:
 
 Selenium tests:
-nosetests -vs tests/ui/
+`nosetests -vs tests/ui/`
 
 Performance test and plot:
-bash tests/performance/performance.sh
-python histogram.py
+`bash tests/performance/performance.sh`
 
-General notes:
+Plot only:
+`python libs/histogram.py {full/path/to/file}`
 
-
-.env file contents:
-
-PERFORMANCE_TEST_OUTPUT_PATH=

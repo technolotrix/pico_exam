@@ -4,6 +4,7 @@
 # source qa_dev/bin/activate
 # pip install -r requirements.txt
 
-nosetests -vs tests/ui/ &
-bash tests/performance/performance.sh
+
+bash tests/performance/performance.sh &
+nosetests -vs tests/ui/
 
