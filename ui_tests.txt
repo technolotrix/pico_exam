@@ -1,4 +1,4 @@
-Create a strategy or plan document that describes your approach and the test cases you will execute. Include in the plan xpath or element/selector details needed for each test.
+`Create a strategy or plan document that describes your approach and the test cases you will execute. Include in the plan xpath or element/selector details needed for each test.`
 
 1. Overall strategy: Start with end-to-end workflow cases to make sure all points of workflow operate as expected under normal conditions. Can the user go through the workflow? From there, outline and define all other functional test cases for the area under test including assigning test cases an appropriate priority (examples include invalid email displays error, password meets requirements, cannot create account with no password, etc.)  Note that verifying the email has arrived is not in the scope of the included automation example, but it can be automated in the future if necessary. Lower priority functional tests are automated last (e.g. verify placeholder text in form fields)
 
@@ -17,4 +17,3 @@ Some blockers, thoughts, and other considerations:
 TODO:
 Dockerize test suite
 Add env variables and config files for CI integration and cross-enviroment execution
-Script for running tests

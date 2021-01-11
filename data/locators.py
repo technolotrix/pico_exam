@@ -13,6 +13,7 @@ class OnboardingLocators():
     COMMUNITY_AGREEMENT = (By.LINK_TEXT, "Pico Community Agreement")
     EMAIL_FIELD = (By.CSS_SELECTOR, "input[type='email']")
     EMAIL_DISPLAY = (By.CSS_SELECTOR, "#OnboardingWizard > div.box-dialog > div > div > form > div > div > div._372002a.col-12 > div")
+    EMAIL_EXISTS_ERROR = (By.CSS_SELECTOR, "NOTIMPLEMENTED")
     EMAIL_SENT_VERIFICATION = (By.CSS_SELECTOR, "#OnboardingWizard > div.box-dialog > div > form > div > div > div._431cfea.col-12 > img")
     INVALID_EMAIL_ERROR = (By.CSS_SELECTOR, "span:contains('Invalid Email'")
     LOGIN_BUTTON = (By.CSS_SELECTOR, "#OnboardingWizard > div.box-dialog > div > div > form > div > div > div._372002a.col-12 > h4 > a")

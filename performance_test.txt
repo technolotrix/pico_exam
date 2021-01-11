@@ -1,10 +1,8 @@
-Create a strategy or plan document that describes your approach
+`Create a strategy or plan document that describes your approach`
 
-1. Start by getting a baseline and using monitoring to understand how endpoints are currently performing
-2. Define the load test parameters (i.e. how many requests, over what time period, at what time of day)
-3.
-4.
+1. Start by acquiring a baseline measurement of performance and defining indicators of reliable performance for each endpoint. Prioritize these endpoints and implement tests and monitoring for the most important ones first.
 
+2. Define the parameters that are needed for each test (i.e. how many requests, over what time period, at what time of day). For example, high concurrency over a short amount of time will have different results than lower concurrency and a longer/heavier overall load. What is the upper limit of each endpoint's capabilitly before performance suffers? If the system crashes, was data saved?
 
-- Potential blockers:
-- Not getting 200 on any kind of POST
+3. For stress tests, design and test for sudden usage spikes that exceed current capabilities (a sudden influx of signups, for example). This relies on aforementioned historical data and monitoring.
+

@@ -10,8 +10,14 @@ To change the URL used for performance tests, edit
     `https://sites.google.com/a/chromium.org/chromedriver/downloads`
     Otherwise, you can update config/settings.py to use firefox (lowercase string)
 
-2. Run `setup.sh` from the root directory of this folder
-    The script will create and activate a virtual env, install packages, and run the tests. Alternatively, you can manually run tests from the root directory of the project:
+2. Do the following steps to set up your environment
+    `alias python=python3`
+    `python -m venv qa_dev`
+    `source qa_dev/bin/activate`
+    `pip install -r requirements.txt`
+
+3. Run tests from the root directory of the project:
+    Tests are expected to fail until `next` button can be clicked correctly in Selenium
 
 Selenium tests:
 `nosetests -vs tests/ui/`
