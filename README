@@ -15,6 +15,7 @@ To change the URL used for performance tests, edit
     `python -m venv qa_dev`
     `source qa_dev/bin/activate`
     `pip install -r requirements.txt`
+    `mkdir tmp`
 
 3. Run tests from the root directory of the project:
     Tests are expected to fail until `next` button can be clicked correctly in Selenium
